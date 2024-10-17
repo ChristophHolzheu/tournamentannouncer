@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer & Durchsagen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <table class="tablehead table1">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Einstellungen:</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td><label for="spieldauer">Spieldauer (min):</label></td>
+                <td><input class="steuerfeld" type="number" id="spieldauer" min="1" value="10"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="pausendauer">Pausendauer (min):</label></td>
+                <td><input class="steuerfeld" type="number" id="pausendauer" min="1" value="5"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="halbzeit">Halbzeit:</label></td>
+                <td><input type="checkbox" id="halbzeit" onchange="inithalfTimeSelector()"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="fieldSelector">Anzahl der Felder:</label></td>
+                <td><select id="fieldSelector" onchange="generateFields()">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="selectedvoice">Stimmauswahl (1-10):</label></td>
+                <td><input class="steuerfeld" type="number" id="selectedvoice" min="1" value="10" max="10" onchange="speakText('Stimme wurde geändert: 1 2 3 Test')"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="speakvolume">Lautstärke Stimme (%):</label></td>
+                <td><input class="steuerfeld" type="number" id="speakvolume" min="0" value="100" max="100" onchange="speakText('Lautstäke Test')"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="beepvolume">Lautstärke Beep (%):</label></td>
+                <td><input class="steuerfeld" type="number" id="beepvolume" min="0" max="100" value="10" onchange="playBeep(0.3)"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table3">
+        <tbody>
+            <tr>
+                <td><h2 id="timerDisplay">00:00.0</h2></td>
+                <td><button onclick="announcement()">Start</button></td>
+                <td><button onclick="stopTimer()">Stop</button></td>
+                <td><button onclick="pauseTimer()">Pause</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="tablehead table1">
+        <tbody>
+            <tr>
+                <td></td>
+                <td><label for="roundSelector">Aktueller Durchgang:</label></td>
+                <td><select id="roundSelector" onchange="manualRoundSelection(),updateArrowPosition(currentRound,isPlaying)"></select></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="statusSelector">Aktueller Status:</label></td>
+                <td><select id="statusSelector" onchange="manualstatusSelection(),updateArrowPosition(currentRound,isPlaying)"></select></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="halfTimeSelector">Aktuelle Halbzeit:</label></td>
+                <td><select id="halfTimeSelector" onchange="manualhalfTimeSelection()"></select></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+
+
+<div class="arrowTable">
+
+    <div id="arrowPos">
+        <div id="arrowIcon">&#10132;</div> <!-- Unicode Pfeil -->
+    </div>
+
+    <table id="gameTable" class="tablehead table2">
+        <thead>
+            <tr>
+                <th>Spiel</th>
+                <th>Feld</th>
+                <th>Team 1</th>
+                <th>Team 2</th>
+                <th>Schiedsrichter</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" name="game" value="Durchgang 1"></td>
+                <td><input type="text" name="field" value="Feld 1"></td>
+                <td><input type="text" name="team1" value="Team A"></td>
+                <td><input type="text" name="team2" value="Team B"></td>
+                <td><input type="text" name="referee" value="Team C"></td>
+            </tr>
+            <!-- 
+            <tr>
+                <td><input type="text" name="game" value="Durchgang 2"></td>
+                <td><input type="text" name="field" value="Feld 1"></td>
+                <td><input type="text" name="team1" value="Team D"></td>
+                <td><input type="text" name="team2" value="Team E"></td>
+                <td><input type="text" name="referee" value="Team F"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="game"></td>
+                <td><input type="text" name="field"></td>
+                <td><input type="text" name="team1"></td>
+                <td><input type="text" name="team2"></td>
+                <td><input type="text" name="referee"></td>
+            </tr>
+                    -->
+        </tbody>
+    </table>
+</div>
+
+<body>
+    <script src="script.js"></script>
+    <script>initialisation();</script>
+</body>
+
+</html>

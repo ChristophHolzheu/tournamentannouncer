@@ -1,0 +1,110 @@
+/* Entferne die Spin-Buttons in Chrome, Safari und Edge */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin-top: 10px;
+    background-color: #cccccc;
+}
+
+h1 {
+    color:rgb(0, 0, 0);
+}
+label {
+    margin-left: 0px;
+}
+
+input.steuerfeld {
+    width: 80px;
+
+}
+
+button {
+    margin-left: 0px;
+    /*padding: 10px 0px;*/
+    width: 60px;
+
+    font-size: 16px;
+
+}
+
+h2 {
+    margin-left: 0px;
+}
+
+table.tablehead {
+    table-layout: fixed;
+    max-width: 750px;
+    min-width: 750px;
+    width: 90%;
+    border-color: transparent;
+    border-collapse: collapse;
+    background-color: transparent;
+    margin-left: 50px;
+}
+
+table.tablehead th,td {
+    width: 50px;
+    padding: 7px;
+    text-align: center;
+}
+
+table.table1 th,
+table.table1 td {
+    border-color: transparent;
+}
+
+table.table2 th,
+table.table2 td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table.table1 td input,select{
+    background-color: transparent;
+    border-color: transparent;
+    text-align: center;
+}
+
+table.table2 td input {
+    background-color: transparent;
+    border-color: transparent;
+    text-align: left;
+}
+
+table.table3 {
+    table-layout: fixed;
+    max-width: 450px;
+    min-width: 450px;
+    width: 100%;
+    border: transparent;
+    background-color: rgb(181, 181, 181);
+    margin-left: 140px;
+}
+
+table.table3 td {
+    text-align: center;
+    border-color: transparent;
+}
+.arrowTable {
+    display:block;
+    align-items: flex-start;
+}
+#arrowPos {
+    width: 50px;
+    text-align: right;
+}
+
+#arrowIcon {
+    display: block;
+    font-size: 25px;
+    color: red;
+    position: relative;
+}
+
